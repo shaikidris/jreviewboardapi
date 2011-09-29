@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="rsp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="total_results"/>
+        <xs:element ref="stat"/>
+        <xs:element ref="diff_comments"/>
+        <xs:element ref="links"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="total_results" type="xs:integer"/>
+  <xs:element name="stat" type="xs:NCName"/>
+  <xs:element name="diff_comments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="array"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="array">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="item"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="interfilediff"/>
+        <xs:element ref="num_lines"/>
+        <xs:element ref="links"/>
+        <xs:element ref="timestamp"/>
+        <xs:element ref="id"/>
+        <xs:element ref="text"/>
+        <xs:element ref="first_line"/>
+        <xs:element ref="public"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interfilediff">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="num_lines" type="xs:integer"/>
+  <xs:element name="timestamp" type="xs:string"/>
+  <xs:element name="id" type="xs:integer"/>
+  <xs:element name="text" type="xs:string"/>
+  <xs:element name="first_line" type="xs:integer"/>
+  <xs:element name="public" type="xs:integer"/>
+  <xs:element name="links">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="user"/>
+        <xs:element ref="self"/>
+        <xs:choice>
+          <xs:element ref="create"/>
+          <xs:sequence>
+            <xs:element ref="filediff"/>
+            <xs:element ref="update"/>
+            <xs:element ref="delete"/>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="href"/>
+        <xs:element ref="method"/>
+        <xs:element ref="title"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="self">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="href"/>
+        <xs:element ref="method"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="create">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="href"/>
+        <xs:element ref="method"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filediff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="href"/>
+        <xs:element ref="method"/>
+        <xs:element ref="title"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="update">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="href"/>
+        <xs:element ref="method"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="delete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="href"/>
+        <xs:element ref="method"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="href" type="xs:anyURI"/>
+  <xs:element name="method" type="xs:NCName"/>
+  <xs:element name="title" type="xs:string"/>
+</xs:schema>
