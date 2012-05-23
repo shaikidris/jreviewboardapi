@@ -97,7 +97,7 @@ public class ReviewBoardApi {
 		int iReviewRequestList=0;
 		for (ReviewRequest reviewRequest : reviewRequestList) {
 			Long reviewRequestId = reviewRequest.getId();
-			logger.info("* Listing All Review Resouce from Review Request :"+reviewRequest.getSummary());
+			logger.debug("* Listing All Review Resouce from Review Request :"+reviewRequest.getSummary());
 			
 			ReviewRequest reviewRequestPopulated = getReviewRequest(reviewRequest);
 			
@@ -153,7 +153,6 @@ public class ReviewBoardApi {
 	
 	public String executeApi(String api,Map<String,String> map) throws Exception {
 	
-		logger.info("Executing API...");
 		StringBuilder builder = new StringBuilder();
 		String params="";
 		if(map!=null){
@@ -171,7 +170,7 @@ public class ReviewBoardApi {
 		
 		api=api+"?"+params;
 		
-		logger.info("Executing the ReviewBoard API["+api+"]");
+		logger.debug("Executing the ReviewBoard API["+api+"]");
 		
 		URL url = new URL(api);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -191,7 +190,7 @@ public class ReviewBoardApi {
 				(conn.getInputStream())));
 
 		String output;
-		logger.info("Getting Output from Server ....");
+		logger.debug("Getting Output from Server ....");
 		while ((output = br.readLine()) != null) {
 			builder.append(output);
 		}

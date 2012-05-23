@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBElement;
 import org.apache.log4j.Logger;
 
 import com.reviewboard.api.model.ReviewRequest;
+import com.reviewboard.api.model.reviewrequests.Array;
 import com.reviewboard.api.model.reviewrequests.Changenum;
 import com.reviewboard.api.model.reviewrequests.Item;
 import com.reviewboard.api.model.reviewrequests.Links;
@@ -21,7 +22,16 @@ public class ReviewRequestsHelper {
 	private static final String BRANCH="branch";
 	private static final String STATUS="status";
 	private static final String DESCRIPTION="description";
+	
+	private static final String BUGS_CLOSED="bugs_closed";
+	private static final String TARGET_PEOPLE="target_people";
+	private static final String TARGET_GROUPS="target_groups";
+	private static final String LAST_UPDATED="last_updated";
+	
+	private static final String TARGET_GROUPS_NAME="title";
+	private static final String TARGET_PEOPLE_NAME="title";
 
+	
 	public static ReviewRequest decode(Item item) throws Exception {
 		ReviewRequest reviewItem=null;
 		
@@ -66,6 +76,68 @@ public class ReviewRequestsHelper {
 					else if(DESCRIPTION.equals(poElement.getName().toString().trim())){
 						String desc = (String)poElement.getValue();
 						reviewItem.setDescription(desc);
+					}
+					else if(BUGS_CLOSED.equals(poElement.getName().toString().trim())){
+						//String bugs_closed = (String)poElement.getValue();
+						
+						Array bugs_closed = (com.reviewboard.api.model.reviewrequests.Array)poElement.getValue();
+
+						List<Item> items = bugs_closed.getArray().getItem();
+						for (Item item3 : items) {
+							List<Object> content2 = item3.getContent();
+							for (Object itemStr : content2) {
+								reviewItem.getBugsClosed().add(itemStr.toString());
+							}
+						}
+						
+						//reviewItem.setBugsClosed(bugs_closed);
+						
+					}
+					else if(TARGET_PEOPLE.equals(poElement.getName().toString().trim())){
+						
+						Array targetPeople = (com.reviewboard.api.model.reviewrequests.Array)poElement.getValue();
+
+						List<Item> itemsTargetPeople = targetPeople.getArray().getItem();
+						for (Item item3 : itemsTargetPeople) {
+							List<Object> content2 = item3.getContent();
+							for (Object itemStr : content2) {
+								
+								if(itemStr instanceof JAXBElement){
+									JAXBElement elem = (JAXBElement) itemStr;
+									
+									if(TARGET_PEOPLE_NAME.equals(elem.getName().toString())){								
+										reviewItem.getTargetPeople().add(elem.getValue().toString());
+									}
+
+								}
+								
+							}
+						}
+					}
+					else if(TARGET_GROUPS.equals(poElement.getName().toString().trim())){
+						Array targetGroups = (com.reviewboard.api.model.reviewrequests.Array)poElement.getValue();
+						
+						List<Item> items = targetGroups.getArray().getItem();
+						for (Item item3 : items) {
+							List<Object> content2 = item3.getContent();
+							for (Object itemStr : content2) {
+								
+								if(itemStr instanceof JAXBElement){
+									JAXBElement elem = (JAXBElement) itemStr;
+									
+									if(TARGET_GROUPS_NAME.equals(elem.getName().toString())){								
+										reviewItem.getTargetGroups().add(elem.getValue().toString());
+									}
+
+								}
+							}
+						}
+						
+						//reviewItem.setTargetGroups(targetGroups);
+					}
+					else if(LAST_UPDATED.equals(poElement.getName().toString().trim())){
+						String lastUpdated = (String)poElement.getValue();
+						reviewItem.setLastUpdated(lastUpdated);
 					}
 					
 

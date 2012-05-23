@@ -117,8 +117,10 @@ public class JAXBHelper {
 			}
 			if(itemList!=null){
 				for (com.reviewboard.api.model.reviewrequests.Item item : itemList) {
+					
 					ReviewRequest decodeReviewRequest = ReviewRequestsHelper
 							.decode(item);
+					logger.info("Item Decoded : "+decodeReviewRequest.getSummary());
 					list.add(decodeReviewRequest);
 				}
 				logger.info("ReviewRequests decoded");
