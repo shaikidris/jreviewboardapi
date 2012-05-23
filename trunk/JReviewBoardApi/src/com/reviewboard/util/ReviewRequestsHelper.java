@@ -147,6 +147,11 @@ public class ReviewRequestsHelper {
 				} else if (object instanceof Links) {
 					Links links = (Links) object;
 					//logger.info(links);
+					if(links.getSubmitter()!=null){					
+						String sub = links.getSubmitter().getTitle();
+						reviewItem.setSubmitter(sub);
+					}
+					
 				}
 			}
 		

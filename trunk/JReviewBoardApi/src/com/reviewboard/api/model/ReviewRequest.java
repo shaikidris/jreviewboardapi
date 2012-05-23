@@ -15,8 +15,7 @@ public class ReviewRequest {
 	private String branch;
 	private String description;
 	
-	private String owner;
-	private String reviewer;
+	private String submitter;
 	
 	private List<String> bugsClosed=new ArrayList<String>();
 	private List<String> targetPeople=new ArrayList<String>();
@@ -86,22 +85,6 @@ public class ReviewRequest {
 		this.reviewResouces = reviewResouces;
 	}
 
-	public String getOwner() {
-		return owner;
-	}
-
-	public void setOwner(String owner) {
-		this.owner = owner;
-	}
-
-	public String getReviewer() {
-		return reviewer;
-	}
-
-	public void setReviewer(String reviewer) {
-		this.reviewer = reviewer;
-	}
-
 	public String getLastUpdated() {
 		return lastUpdated;
 	}
@@ -132,6 +115,14 @@ public class ReviewRequest {
 
 	public void setTargetPeople(List<String> targetPeople) {
 		this.targetPeople = targetPeople;
+	}
+
+	public String getSubmitter() {
+		return submitter;
+	}
+
+	public void setSubmitter(String submitter) {
+		this.submitter = submitter;
 	}
 		
 }

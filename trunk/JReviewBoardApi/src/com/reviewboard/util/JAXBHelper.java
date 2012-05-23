@@ -241,7 +241,7 @@ public class JAXBHelper {
 					if(links!=null){
 						Submitter submitter = links.getSubmitter();
 						if(submitter!=null){
-							reviewRequest.setOwner(submitter.getTitle());
+							reviewRequest.setSubmitter(submitter.getTitle());
 						}
 					}
 					Array targetPeople = rr.getTargetPeople();
@@ -251,7 +251,7 @@ public class JAXBHelper {
 							Item item = array.getItem();
 							
 							if(item!=null){
-								reviewRequest.setReviewer(item.getTitle());
+								//reviewRequest.setReviewer(item.getTitle());
 							}
 							
 						}
