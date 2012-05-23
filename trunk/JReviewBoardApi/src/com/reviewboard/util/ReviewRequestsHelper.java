@@ -137,7 +137,9 @@ public class ReviewRequestsHelper {
 					}
 					else if(LAST_UPDATED.equals(poElement.getName().toString().trim())){
 						String lastUpdated = (String)poElement.getValue();
-						reviewItem.setLastUpdated(lastUpdated);
+						
+						reviewItem.setLastUpdated(DateUtil.toDate(lastUpdated));
+
 					}
 					
 

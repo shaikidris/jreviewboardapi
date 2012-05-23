@@ -21,7 +21,7 @@ public class ReviewRequest {
 	private List<String> targetPeople=new ArrayList<String>();
 
 	private List<String> targetGroups=new ArrayList<String>();
-	private String lastUpdated;
+	private Date lastUpdated;
 
 	private List<ReviewResource> reviewResouces;
 	
@@ -85,13 +85,7 @@ public class ReviewRequest {
 		this.reviewResouces = reviewResouces;
 	}
 
-	public String getLastUpdated() {
-		return lastUpdated;
-	}
-
-	public void setLastUpdated(String lastUpdated) {
-		this.lastUpdated = lastUpdated;
-	}
+	
 
 	public List<String> getBugsClosed() {
 		return bugsClosed;
@@ -123,6 +117,14 @@ public class ReviewRequest {
 
 	public void setSubmitter(String submitter) {
 		this.submitter = submitter;
+	}
+
+	public Date getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(Date lastUpdated) {
+		this.lastUpdated = lastUpdated;
 	}
 		
 }
