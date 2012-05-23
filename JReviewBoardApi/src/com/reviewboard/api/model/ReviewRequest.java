@@ -1,12 +1,12 @@
 package com.reviewboard.api.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.reviewboard.util.DateUtil;
 
 public class ReviewRequest {
-
 	
 	private String summary;
 	private Long id;
@@ -17,6 +17,12 @@ public class ReviewRequest {
 	
 	private String owner;
 	private String reviewer;
+	
+	private List<String> bugsClosed=new ArrayList<String>();
+	private List<String> targetPeople=new ArrayList<String>();
+
+	private List<String> targetGroups=new ArrayList<String>();
+	private String lastUpdated;
 
 	private List<ReviewResource> reviewResouces;
 	
@@ -94,6 +100,38 @@ public class ReviewRequest {
 
 	public void setReviewer(String reviewer) {
 		this.reviewer = reviewer;
+	}
+
+	public String getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(String lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
+
+	public List<String> getBugsClosed() {
+		return bugsClosed;
+	}
+
+	public void setBugsClosed(List<String> bugsClosed) {
+		this.bugsClosed = bugsClosed;
+	}
+
+	public List<String> getTargetGroups() {
+		return targetGroups;
+	}
+
+	public void setTargetGroups(List<String> targetGroups) {
+		this.targetGroups = targetGroups;
+	}
+
+	public List<String> getTargetPeople() {
+		return targetPeople;
+	}
+
+	public void setTargetPeople(List<String> targetPeople) {
+		this.targetPeople = targetPeople;
 	}
 		
 }
