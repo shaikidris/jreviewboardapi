@@ -175,7 +175,7 @@ public class JAXBHelper {
 		logger.info("Reading the DiffComment Content");
 		com.reviewboard.api.model.diffcomment.Rsp rsp = null;
 		List<DiffComment> list = new ArrayList<DiffComment>();
-
+		logger.info(xmlContent);
 		JAXBContext ctx;
 		try {
 			InputStream is = new ByteArrayInputStream(
