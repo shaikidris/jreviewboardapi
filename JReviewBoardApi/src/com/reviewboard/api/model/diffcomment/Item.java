@@ -75,7 +75,7 @@ public class Item {
     @XmlElement(name = "public", required = true)
     protected BigInteger _public;
     
-    @XmlElement(name = "issue_status", required = true)
+    @XmlElement(name = "issue_status")
 	private String issueStatus;
    
 
