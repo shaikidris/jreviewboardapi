@@ -18,6 +18,8 @@ public class DiffCommentHelper {
 		obj=new DiffComment();
 		obj.setContent(item.getText());
 		
+		obj.setIssueStatus(item.getIssueStatus());
+		
 		return obj;
 	}
 }

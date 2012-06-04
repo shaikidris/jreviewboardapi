@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}text"/>
  *         &lt;element ref="{}first_line"/>
  *         &lt;element ref="{}public"/>
+ *         &lt;element ref="{}issue_status"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -51,7 +52,8 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "text",
     "firstLine",
-    "_public"
+    "_public",
+    "issueStatus"
 })
 @XmlRootElement(name = "item")
 public class Item {
@@ -72,6 +74,10 @@ public class Item {
     protected BigInteger firstLine;
     @XmlElement(name = "public", required = true)
     protected BigInteger _public;
+    
+    @XmlElement(name = "issue_status", required = true)
+	private String issueStatus;
+   
 
     /**
      * Gets the value of the interfilediff property.
@@ -264,5 +270,13 @@ public class Item {
     public void setPublic(BigInteger value) {
         this._public = value;
     }
+
+	public String getIssueStatus() {
+		return issueStatus;
+	}
+
+	public void setIssueStatus(String issueStatus) {
+		this.issueStatus = issueStatus;
+	}
 
 }
