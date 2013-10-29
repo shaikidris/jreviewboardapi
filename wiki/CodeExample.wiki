@@ -1,6 +1,6 @@
 = A code example =
 
-[jreviewboardapi.blogspot.com Examples]
+[http://jreviewboardapi.blogspot.com Examples]
 
 {{{
 
